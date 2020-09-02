@@ -41,7 +41,6 @@ Create a directory in your local computer and cd into it. Inside this directory,
 ## Build Custom Image 
 
 * **template.json** file is a customized Packer template that creates the machine image using the configurqations specified.
-* **install_ansible.sh** is a bash script that installs Ansible locally.
 * **ansible_playbook.yml** performs different tasks which will set up a NodeJs web app including all dependencies, configure an Nginx proxy server to make the app available to the internet, setup pm2 to make the application always available even when the instance is restarted.
 
 * Run `bash build_image.sh` to provision the image.
