@@ -32,9 +32,29 @@
 
 **Create AWS Environment Variables**
 
-Create a directory in your local computer and cd into it. Inside this directory, create a .env file that will contain your AWS access key id and secret key and region.
+Create a directory in your local computer and cd into it. Inside this directory, create a .env file that will contain your AWS access key id and secret key and region. Add the file to the.gitignore to avoid getting pushed to the remote repository.
 ```
    export AWS_ACCESS_KEY_ID=
    export AWS_SECRET_ACCESS_KEY=
    export AWS_REGION=
 ```
+## Build Custom Image 
+
+* **template.json** file is a customized Packer template that creates the machine image using the configurqations specified.
+* **install_ansible.sh** is a bash script that installs Ansible locally.
+* **ansible_playbook.yml** performs different tasks which will set up a NodeJs web app including all dependencies, configure an Nginx proxy server to make the app available to the internet, setup pm2 to make the application always available even when the instance is restarted.
+
+* Run `bash build_image.sh` to provision the image.
+
+## Launch EC2 Instance using the newly provisioned AMI
+
+* Navigate to the EC2 dashboard our new AMI will be listed in the main window of the Images -> AMIs section.
+* Launch an EC2 instance using the newly created AMI as our image. 
+* Click on Launch and create a security group that will allow traffic from all sources via the port 3000.
+* Choose a new or existing key pair and launch the instance.
+* Copy the public IP address of the instance and paste on the browser.
+
+## Further readings
+
+* Read up on Medium [Building Custom AMI image using Ansible and Packer](https://medium.com/@chiamakaobitube/building-custom-machine-image-using-ansible-packer-and-bash-in-aws-178b93d08136)
+
